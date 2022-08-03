@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Weather Today</string>
+    <string name="search">Search</string>
+    <string name="description_weather">Take an umbrella today</string>
+    <string name="temprature">26º</string>
+    <string name="city">Dansoman</string>
+    <string name="alt_weather_ic" />
 </resources>
