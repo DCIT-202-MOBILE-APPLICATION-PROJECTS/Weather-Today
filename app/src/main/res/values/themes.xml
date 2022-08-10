@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="showTitle">false</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
     </style>
 </resources>
