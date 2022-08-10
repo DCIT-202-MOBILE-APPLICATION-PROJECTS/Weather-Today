@@ -66,4 +66,15 @@
         android:textAlignment="center"
         android:textSize="20sp" />
 
-</RelativeLayout>
+        <SearchView
+            android:id="@+id/search_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/description_weather"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/search_box_bg"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search For A City" />
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
