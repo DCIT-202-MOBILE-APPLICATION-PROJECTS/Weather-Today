@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     final String API_KEY = "a62f19204db4271d56c8d5f2dc4c0dc3";
-    TextView cityView, temperature, weatherDescription;
+    TextView cityNameView, temperature, weatherDescription;
     SearchView searchBox;
     RequestQueue mQueue;
     String cityName, url, urlTemplate, units;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cityView = findViewById(R.id.city);
+        cityNameView = findViewById(R.id.city);
         temperature = findViewById(R.id.temperature);
         weatherDescription = findViewById(R.id.description_weather);
         searchBox = findViewById(R.id.search_box);
