@@ -81,6 +81,65 @@ public class MainActivity extends AppCompatActivity {
                     //JSONArray cname = response.getJSONArray("name");
                     String name = (String) response.getString("name");
                     cityNameView.setText(name);
+
+                    // Icon View
+                    String iconCode = weatherObj.getString("icon");
+                    switch (iconCode) {
+                        // clear sky
+                        case "01d":
+                        case "01n":
+                            weatherIconView.setImageResource(R.drawable.sunny);
+                            break;
+
+                        // few clouds
+                        case "02d":
+                        case "02n":
+                            weatherIconView.setImageResource(R.drawable.less_clouds);
+                            break;
+
+                        // scattered clouds
+                        case "03d":
+                        case "03n":
+                            weatherIconView.setImageResource(R.drawable.scattered_clouds);
+                            break;
+
+                        // broken clouds
+                        case "04d":
+                        case "04n":
+                            weatherIconView.setImageResource(R.drawable.broken_cloud);
+                            break;
+
+                        // shower rain
+                        case "09d":
+                        case "09n":
+                            weatherIconView.setImageResource(R.drawable.little_rain);
+                            break;
+
+                        // rain
+                        case "10d":
+                        case "10n":
+                            weatherIconView.setImageResource(R.drawable.heavy_rain);
+                            break;
+
+                        // thunderstorm
+                        case "11d":
+                        case "11n":
+                            weatherIconView.setImageResource(R.drawable.thunderstorm);
+                            break;
+
+                        // snow
+                        case "13d":
+                        case "13n":
+                            weatherIconView.setImageResource(R.drawable.heavy_snow);
+                            break;
+
+                        // mist
+                        case "50d":
+                        case "50n":
+                            weatherIconView.setImageResource(R.drawable.fog);
+                            break;
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
