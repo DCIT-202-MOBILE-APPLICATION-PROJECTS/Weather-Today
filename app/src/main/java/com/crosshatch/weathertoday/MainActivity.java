@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     TextView cityNameView, temperature, weatherDescription;
     SearchView searchBox;
     RequestQueue mQueue;
-    String cityName, url, urlTemplate, units;
+    String url, urlTemplate, units;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
