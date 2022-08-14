@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     SearchView searchBox;
     RequestQueue mQueue;
     String url, urlTemplate, units;
+    ImageView weatherIconView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         temperature = findViewById(R.id.temperature);
         weatherDescription = findViewById(R.id.description_weather);
         searchBox = findViewById(R.id.search_box);
+        weatherIconView = findViewById(R.id.weather_icon);
 
         mQueue = Volley.newRequestQueue(this);
 
