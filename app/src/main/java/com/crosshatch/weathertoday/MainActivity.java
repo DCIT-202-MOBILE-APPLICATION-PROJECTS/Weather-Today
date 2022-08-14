@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         searchBox.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                getWeatherData(query);
+                jsonParse(query);
                 Log.i("mine", "onQueryTextSubmit: " + query);
                 return false;
             }
@@ -54,31 +54,40 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getWeatherData(String query) {
-        cityName = query;
-        units = "metric";
-        url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=" + units + "&appid=" + API_KEY;
+    private void jsonParse(String query){
+        String units = "metric";
+        String url = "https://api.openweathermap.org/data/2.5/weather?q="+query+"&appid="+API_KEY+"&units="+units;
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), "getWeatherData " + query, Toast.LENGTH_LONG).show();
-                        try {
-                            JSONArray weatherResponse = response.getJSONArray("weather");
-                            JSONObject weatherArray = weatherResponse.getJSONObject(0);
-                            String description = weatherArray.getString("description");
-                            Toast.makeText(getApplicationContext(), description, Toast.LENGTH_LONG).show();
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    //Getting the array i want from the JSON
+                    //For temperature
+                    JSONObject jsonobj = response.getJSONObject("main");
+                    int temperatureASInt = (int) jsonobj.getDouble("temp");
+                    temperature.setText(temperatureASInt + getString(R.string.degree_symbol));
+                    Log.i("mine", "temp: "+temperatureASInt);
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+                    //For Description
+                    JSONArray weather = response.getJSONArray("weather");
+                    JSONObject weatherObj = weather.getJSONObject(0);
+                    String desc = weatherObj.getString("description");
+                    weatherDescription.setText(desc);
+                    //For City name
+                    //JSONArray cname = response.getJSONArray("name");
+                    String name = (String) response.getString("name");
+                    cityNameView.setText(name);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
         });
+        mQueue.add(request);
     }
 }
