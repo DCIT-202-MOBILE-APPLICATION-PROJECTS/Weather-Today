@@ -5,4 +5,5 @@
     <string name="temprature">26º</string>
     <string name="city">Dansoman</string>
     <string name="alt_weather_ic" />
+    <string name="degree_symbol">°</string>
 </resources>
