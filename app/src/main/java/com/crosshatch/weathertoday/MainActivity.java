@@ -7,7 +7,6 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -57,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void jsonParse(String query){
+    private void jsonParse(String query) {
         String units = "metric";
-        String url = "https://api.openweathermap.org/data/2.5/weather?q="+query+"&appid="+API_KEY+"&units="+units;
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + API_KEY + "&units=" + units;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonobj = response.getJSONObject("main");
                     int temperatureASInt = (int) jsonobj.getDouble("temp");
                     temperature.setText(temperatureASInt + getString(R.string.degree_symbol));
-                    Log.i("mine", "temp: "+temperatureASInt);
+                    Log.i("mine", "temp: " + temperatureASInt);
 
                     //For Description
                     JSONArray weather = response.getJSONArray("weather");
