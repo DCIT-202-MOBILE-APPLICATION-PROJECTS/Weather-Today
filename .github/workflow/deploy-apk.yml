@@ -29,4 +29,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.APK_BUILD_TOKEN }}
           APP_FOLDER: app
-          RELEASE_TITLE: weather-today.apk
+          RELEASE_TITLE: weather-today
